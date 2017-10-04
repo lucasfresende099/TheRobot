@@ -37,6 +37,8 @@ public class PlayerCtrl : MonoBehaviour {
 		if (Input.GetButtonDown("Jump")) {
 			Jump();
 		}
+
+		ShowFalling();
 	}
 
 	void MoveHorizontal(float speed){
@@ -58,8 +60,12 @@ public class PlayerCtrl : MonoBehaviour {
 		if (!isjumping) {
 			anim.SetInteger("State", 0);
 			}
-		
-		
+	}
+
+	void ShowFalling() {
+		if (rb.velocity.y < 0f) {
+			anim.SetInteger("State", 3);
+		}
 	}
 
 	void Jump(){
