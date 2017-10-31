@@ -100,7 +100,7 @@ public class PlayerCtrl : MonoBehaviour {
 		}
 
 		if (canDoublejump && !isGrounded){
-			isjumping = true;
+			rb.velocity = Vector2.zero;
 		    rb.AddForce(new Vector2(0f, jumpSpeed));
 		    anim.SetInteger("State", 1);
 			canDoublejump = false;
