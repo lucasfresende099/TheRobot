@@ -26,6 +26,10 @@ public class PlayerCtrl : MonoBehaviour {
 
 	bool isjumping = false;
 
+	bool canDoublejump = false;
+
+	public float delayForDoubleJump = 0.2f;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
@@ -91,7 +95,20 @@ public class PlayerCtrl : MonoBehaviour {
 		isjumping = true;
 		rb.AddForce(new Vector2(0f, jumpSpeed));
 		anim.SetInteger("State", 1);
+
+		Invoke("EnableDoubleJump", delayForDoubleJump);
 		}
+
+		if (canDoublejump && !isGrounded){
+			isjumping = true;
+		    rb.AddForce(new Vector2(0f, jumpSpeed));
+		    anim.SetInteger("State", 1);
+			canDoublejump = false;
+		}
+	}
+
+	void EnableDoubleJump(){
+		canDoublejump = true;
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
