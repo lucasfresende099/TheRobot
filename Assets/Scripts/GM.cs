@@ -1,5 +1,4 @@
 ﻿
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +9,17 @@ public class GM : MonoBehaviour {
 
 	public float yMinLive = -10f;
 
+	PlayerCtrl player;
+		
+	public float TimeToRespawn = 2f;
+
 	public Transform spawnPoint;
 
 	public GameObject playerPrefab;
 
-	PlayerCtrl player;
+	public UI ui;
 
-	public float TimeToRespawn = 2f;
+	GameData data = new GameData();
 
 	void Awake(){
 		if (instance ==null){
@@ -40,7 +43,16 @@ public class GM : MonoBehaviour {
 				player = obj.GetComponent<PlayerCtrl>();
 			}
 		}
+		 DisplayHudData();
 		
+	}
+
+	void DisplayHudData() {
+		ui.hud.txtCoinCount.text = "x " + data.coinCount;
+	}
+
+	public void IncrementeCoinCount(){
+		data.coinCount++;
 	}
 
 	public void RespawnPlayer(){

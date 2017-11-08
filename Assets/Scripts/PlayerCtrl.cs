@@ -30,7 +30,7 @@ public class PlayerCtrl : MonoBehaviour {
 
 	public float delayForDoubleJump = 0.2f;
 
-	// Use this for initialization
+	
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
@@ -42,7 +42,7 @@ public class PlayerCtrl : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
 
 		if (transform.position.y <GM.instance.yMinLive){
@@ -128,6 +128,7 @@ public class PlayerCtrl : MonoBehaviour {
 	if (other.gameObject.CompareTag("Coin")) {
 		AudioManager.instance.PlayCoinPickupSound(other.gameObject);
 		SFXManager.instance.ShowCoinParticles(other.gameObject);
+		GM.instance.IncrementeCoinCount();
 		Destroy(other.gameObject);
 	}
 }
