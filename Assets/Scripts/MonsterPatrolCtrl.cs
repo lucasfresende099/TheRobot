@@ -1,16 +1,14 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatformCtrl : MonoBehaviour {
+public class MonsterPatrolCtrl : MonoBehaviour {
 
    public Transform pos1, pos2;
 
    public float speed = 2f;
 
-   public float waitTime = 0.5f;
+   public float waitTime = 3f;
 
    Vector3 nextPos;
 	
